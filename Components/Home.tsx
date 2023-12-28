@@ -30,7 +30,7 @@ const Home = () => {
       start={{x: 1, y: 0}}
       end={{x: 0, y: 1}}
       style={{flex: 1}}>
-      <View
+      <ScrollView
         style={{
           flexDirection: 'column',
         }}>
@@ -93,6 +93,41 @@ const Home = () => {
           </View>
         </View>
         <View style={{flexDirection: 'column', padding: 20, rowGap: 10}}>
+          <Text style={{color: 'white', fontSize: 18}}>Today</Text>
+          <ScrollView horizontal={true}>
+            <View
+              style={{
+                flexDirection: 'row',
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  backgroundColor: 'rgba(255, 255, 255, 0.25)',
+                  borderRadius: 20,
+                }}>
+                <View
+                  style={{
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 60,
+                    height: 70,
+                  }}>
+                  <Image
+                    source={require('./assets/sun.png')}
+                    style={{width: 30, height: 30}}
+                  />
+                  <Text style={{color: 'white', fontSize: 12}}>7:00</Text>
+                  <Text style={{color: 'white', fontSize: 12, paddingLeft: 2}}>
+                    11{'\u00b0'}
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+        <View style={{flexDirection: 'column', padding: 20, rowGap: 10}}>
           <Text style={{color: 'white', fontSize: 18}}>Daily Forecast</Text>
           <ScrollView horizontal={true}>
             <View
@@ -129,7 +164,7 @@ const Home = () => {
             </View>
           </ScrollView>
         </View>
-      </View>
+      </ScrollView>
     </LinearGradient>
   );
 };
