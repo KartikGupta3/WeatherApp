@@ -59,10 +59,13 @@ const Home = () => {
     sunnyrainy: require('./assets/SunnyRainy.png'),
     mist: require('./assets/mist.png'),
   };
+  const date = new Date();
+  const Time =
+    date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
   const Handleforecast = useCallback(async (loc1: String) => {
     const options = {
       method: 'GET',
-      url: `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${loc1}&days=3`,
+      url: `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${loc1}`,
     };
 
     try {
@@ -189,13 +192,13 @@ const Home = () => {
               {weatherforecast?.current?.precip_mm}%
             </Text>
           </View>
-          {/* <View style={{flexDirection: 'row', columnGap: 10}}>
+          <View style={{flexDirection: 'row', columnGap: 10}}>
             <Image
               source={require('./assets/sun2.png')}
               style={{width: 15, height: 15, marginTop: 5}}
             />
-            <Text style={{color: 'white', fontSize: 16}}>6:00 am</Text>
-          </View> */}
+            <Text style={{color: 'white', fontSize: 16}}>{Time}</Text>
+          </View>
         </View>
         <View style={{flexDirection: 'column', padding: 20, rowGap: 10}}>
           <Text style={{color: 'white', fontSize: 18}}>Today</Text>
@@ -240,43 +243,6 @@ const Home = () => {
                   )}
                 </View>
               )}
-          </ScrollView>
-        </View>
-        <View style={{flexDirection: 'column', padding: 20, rowGap: 10}}>
-          <Text style={{color: 'white', fontSize: 18}}>Daily Forecast</Text>
-          <ScrollView horizontal={true}>
-            <View
-              style={{
-                flexDirection: 'row',
-                columnGap: 10,
-              }}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                }}>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'column',
-                    backgroundColor: 'rgba(255, 255, 255, 0.25)',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: 100,
-                    height: 100,
-                    borderRadius: 20,
-                  }}>
-                  <Image
-                    source={require('./assets/sun.png')}
-                    style={{width: 30, height: 30}}
-                  />
-                  <Text style={{color: 'white', fontSize: 12}}>Friday</Text>
-                  <Text style={{color: 'white', fontSize: 24, paddingLeft: 5}}>
-                    11{'\u00b0'}
-                  </Text>
-                </View>
-              </View>
-            </View>
           </ScrollView>
         </View>
       </ScrollView>
